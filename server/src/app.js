@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import { tradeRouter } from './routes/tradeRoutes.js';
+import { pullRouter } from './routes/pullRoutes.js';
 
 const app = express();
 
@@ -16,9 +17,13 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// Mount trade routes at root (for /getTrades) and /api (for /api/getTrades)
+// Mount trade routes
 app.use('/', tradeRouter);
 app.use('/api', tradeRouter);
+
+// Mount pull lifecycle routes
+app.use('/pulls', pullRouter);
+app.use('/api/pulls', pullRouter);
 
 // 404 handler for undefined routes
 app.use((req, res) => {
