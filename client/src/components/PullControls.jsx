@@ -130,7 +130,14 @@ export function PullControls({ activePull, onStartPull, isSseConnected }) {
           </div>
 
           {/* Progress bar */}
-          <div className="progress-track" aria-hidden="true">
+          <div
+            className="progress-track"
+            role="progressbar"
+            aria-valuenow={activePull.status === 'completed' ? 100 : activePull.progress || 0}
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-label="Trade pull progress"
+          >
             <div
               className={`progress-fill ${activePull.status === 'failed' ? 'fill-error' : ''}`}
               style={{ width: `${activePull.status === 'completed' ? 100 : activePull.progress || 0}%` }}
@@ -139,9 +146,13 @@ export function PullControls({ activePull, onStartPull, isSseConnected }) {
 
           <div className="banner-bottom">
             <span>
-              {isRunning ? 'Background pull active. Existing trades remain fully available.' : activePull.status === 'completed' ? 'Ingestion completed successfully. Display refreshed.' : 'Pull failed. Zero trades committed to preserve state.'}
+              {isRunning
+                ? 'Background pull active. In-memory store continues serving concurrent reads.'
+                : activePull.status === 'completed'
+                ? 'Ingestion completed successfully. Trade view synchronized.'
+                : 'Pull failed. Zero trades committed to preserve store integrity.'}
             </span>
-            <span className="progress-percent">
+            <span className="progress-percent font-tabular">
               {activePull.status === 'completed' ? '100%' : `${activePull.progress || 0}%`}
             </span>
           </div>

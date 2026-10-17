@@ -1,28 +1,57 @@
 :root {
-  --bg-primary: #0b0e14;
-  --bg-secondary: #121722;
-  --bg-tertiary: #1a2030;
-  --bg-card: #151b28;
-  --border-color: #263044;
-  --border-subtle: #1e2638;
+  /* Surface and Background Tokens - Light Institutional Fintech Theme */
+  --bg-app: #f7f8fa;
+  --bg-card: #ffffff;
+  --bg-subtle: #f3f4f6;
+  --bg-muted: #f9fafb;
+  --bg-elevated: #ffffff;
 
-  --text-primary: #f0f4fc;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
+  /* Border Tokens */
+  --border-color: #e5e7eb;
+  --border-subtle: #f3f4f6;
+  --border-focus: #2563eb;
 
-  --accent-cyan: #06b6d4;
-  --accent-blue: #3b82f6;
-  --color-success: #10b981;
-  --color-warning: #f59e0b;
-  --color-danger: #ef4444;
+  /* Typography Colors (High Contrast WCAG AA/AAA) */
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-muted: #6b7280;
+  --text-light: #9ca3af;
 
-  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  /* Interactive & Accent Tokens */
+  --accent-blue: #2563eb;
+  --accent-blue-hover: #1d4ed8;
+  --accent-blue-active: #1e40af;
+  --accent-blue-subtle: #eff6ff;
+  --accent-blue-border: #bfdbfe;
+
+  /* Semantic State Colors */
+  --color-success: #15803d;
+  --color-success-bg: #f0fdf4;
+  --color-success-border: #bbf7d0;
+  --color-success-text: #166534;
+
+  --color-warning: #b45309;
+  --color-warning-bg: #fffbeb;
+  --color-warning-border: #fde68a;
+  --color-warning-text: #92400e;
+
+  --color-danger: #b91c1c;
+  --color-danger-bg: #fef2f2;
+  --color-danger-border: #fecaca;
+  --color-danger-text: #991b1b;
+
+  /* Shadows - Minimal and crisp */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.02);
+
+  /* Fonts */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
 
   font-family: var(--font-sans);
-  color-scheme: dark;
+  color-scheme: light;
   color: var(--text-primary);
-  background-color: var(--bg-primary);
+  background-color: var(--bg-app);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -37,13 +66,36 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background-color: var(--bg-primary);
+  background-color: var(--bg-app);
   color: var(--text-primary);
   line-height: 1.5;
+  font-family: var(--font-sans);
 }
 
 #root {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+/* Tabular Numerals Utility */
+.font-tabular {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+}
+
+/* Accessible Focus Ring */
+:focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 2px;
+}
+
+/* Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

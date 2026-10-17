@@ -36,13 +36,15 @@ export function TradeTable({
           </span>
         </div>
 
-        <form onSubmit={handleSearchSubmit} className="toolbar-search">
+        <form onSubmit={handleSearchSubmit} className="toolbar-search" role="search">
           <input
+            id="symbol-search-input"
             type="text"
             placeholder="Filter by Symbol (e.g. RELIANCE)..."
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
             className="search-input"
+            aria-label="Filter trades by stock symbol"
           />
           <button type="submit" className="btn-secondary">
             Filter
@@ -56,14 +58,14 @@ export function TradeTable({
       </div>
 
       <div className="table-responsive">
-        <table className="financial-table">
+        <table className="financial-table" aria-label="BSE Trade Transactions Table">
           <thead>
             <tr>
               <th scope="col">Trade ID</th>
               <th scope="col">Client Entity</th>
               <th scope="col">Symbol</th>
               <th scope="col" className="text-right">Quantity</th>
-              <th scope="col" className="text-right">Price (INR)</th>
+              <th scope="col" className="text-right">Price in INR (₹)</th>
               <th scope="col">Execution Time</th>
               <th scope="col" className="text-center">Data Origin</th>
             </tr>
@@ -122,12 +124,12 @@ export function TradeTable({
       </div>
 
       {/* Pagination Controls */}
-      <div className="table-pagination">
+      <div className="table-pagination" aria-label="Table pagination navigation">
         <div className="pagination-info">
           <span>
             Page <strong>{page}</strong> of <strong>{totalPages}</strong>
           </span>
-          <span className="separator">|</span>
+          <span className="separator" aria-hidden="true">|</span>
           <label htmlFor="page-size-select" className="page-size-label">
             Rows per page:
           </label>
@@ -136,6 +138,7 @@ export function TradeTable({
             value={pageSize}
             onChange={(e) => onPageSizeChange(Number(e.target.value))}
             className="page-size-select"
+            aria-label="Select number of rows per page"
           >
             <option value={25}>25</option>
             <option value={50}>50</option>
@@ -149,6 +152,7 @@ export function TradeTable({
             className="btn-page"
             disabled={page <= 1 || loading}
             onClick={() => onPageChange(page - 1)}
+            aria-label="Go to previous page"
           >
             &larr; Previous
           </button>
@@ -157,6 +161,7 @@ export function TradeTable({
             className="btn-page"
             disabled={page >= totalPages || loading}
             onClick={() => onPageChange(page + 1)}
+            aria-label="Go to next page"
           >
             Next &rarr;
           </button>

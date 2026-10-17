@@ -44,7 +44,7 @@ export function useTradeDashboard() {
 
       setTrades(res.data || []);
       setTotalTrades(res.total || 0);
-      setLastSyncTime(new Date().toLocaleTimeString());
+      setLastSyncTime(new Date().toISOString());
     } catch (err) {
       setError(err.message || 'Failed to load trade data');
     } finally {
@@ -70,7 +70,7 @@ export function useTradeDashboard() {
         if (tradeRes.status === 'fulfilled') {
           setTrades(tradeRes.value.data || []);
           setTotalTrades(tradeRes.value.total || 0);
-          setLastSyncTime(new Date().toLocaleTimeString());
+          setLastSyncTime(new Date().toISOString());
         } else {
           setError(tradeRes.reason?.message || 'Failed to load trade data');
         }
