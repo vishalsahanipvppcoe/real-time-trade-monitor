@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import { tradeRouter } from './routes/tradeRoutes.js';
 import { pullRouter } from './routes/pullRoutes.js';
+import { eventRouter } from './routes/eventRoutes.js';
 
 const app = express();
 
@@ -24,6 +25,10 @@ app.use('/api', tradeRouter);
 // Mount pull lifecycle routes
 app.use('/pulls', pullRouter);
 app.use('/api/pulls', pullRouter);
+
+// Mount Server-Sent Events (SSE) routes
+app.use('/events', eventRouter);
+app.use('/api/events', eventRouter);
 
 // 404 handler for undefined routes
 app.use((req, res) => {
