@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Production build outputs
+dist/
+build/
+
+# Environment files and secrets
+.env
+.env*.local
+
+# Runtime logs
+*.log
+npm-debug.log*
+
+# Test coverage reports
+coverage/
+
+# Operating system artifacts
+.DS_Store
+Thumbs.db
+
+# IDE workspace metadata
+.vscode/
+.idea/
