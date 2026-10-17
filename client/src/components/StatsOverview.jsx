@@ -48,18 +48,6 @@ function LastSyncCard({ lastSyncTime }) {
 
   const syncDate = parseTimestamp(lastSyncTime);
 
-  // Formatted stable sync timestamp
-  const formattedSyncTime = syncDate
-    ? syncDate.toLocaleTimeString('en-IN', {
-        hour: 'numeric',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: true
-      })
-    : typeof lastSyncTime === 'string' && lastSyncTime.trim().length > 0
-    ? lastSyncTime
-    : 'Pending...';
-
   // Live wall-clock time that advances every second
   const liveClockTime = new Date(now).toLocaleTimeString('en-IN', {
     hour: 'numeric',
@@ -94,7 +82,7 @@ function LastSyncCard({ lastSyncTime }) {
           {liveClockTime}
         </span>
       </div>
-      <span className="stat-value stat-time font-tabular">{formattedSyncTime}</span>
+      <span className="stat-value stat-time font-tabular">{liveClockTime}</span>
       <span className="stat-hint">
         <span className="relative-sync-text">{getRelativeText()}</span> &bull; SSE aligned
       </span>

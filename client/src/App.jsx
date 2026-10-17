@@ -1,4 +1,5 @@
 import { useTradeDashboard } from './hooks/useTradeDashboard.js';
+import { useTheme } from './hooks/useTheme.js';
 import { Header } from './components/Header.jsx';
 import { StatsOverview } from './components/StatsOverview.jsx';
 import { PullControls } from './components/PullControls.jsx';
@@ -26,9 +27,16 @@ function App() {
     setPageSize
   } = useTradeDashboard();
 
+  const { theme, setTheme, toggleTheme } = useTheme();
+
   return (
     <div className="dashboard-app">
-      <Header sseStatus={sseStatus} />
+      <Header
+        sseStatus={sseStatus}
+        theme={theme}
+        onSetTheme={setTheme}
+        onToggleTheme={toggleTheme}
+      />
 
       <main className="dashboard-content">
         {error && (

@@ -4,7 +4,21 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>client</title>
+    <title>Arham Fintech — BSE Trade Monitor</title>
+    <meta
+      name="description"
+      content="Arham Fintech real-time BSE trade monitoring dashboard and institutional ingestion stream with dark/black and light/white background themes."
+    />
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('arham_fintech_theme');
+          var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+          document.documentElement.setAttribute('data-theme', theme);
+          document.documentElement.style.colorScheme = theme;
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

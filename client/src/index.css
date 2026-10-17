@@ -1,5 +1,6 @@
-:root {
-  /* Surface and Background Tokens - Light Institutional Fintech Theme */
+:root,
+[data-theme="light"] {
+  /* Surface and Background Tokens - White (Light) Institutional Fintech Theme */
   --bg-app: #f7f8fa;
   --bg-card: #ffffff;
   --bg-subtle: #f3f4f6;
@@ -10,6 +11,8 @@
   --border-color: #e5e7eb;
   --border-subtle: #f3f4f6;
   --border-focus: #2563eb;
+  --input-border: #d1d5db;
+  --input-border-hover: #9ca3af;
 
   /* Typography Colors (High Contrast WCAG AA/AAA) */
   --text-primary: #111827;
@@ -57,6 +60,59 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+[data-theme="dark"] {
+  /* Surface and Background Tokens - Black (Dark) Institutional Fintech Theme */
+  --bg-app: #030712;
+  --bg-card: #0f172a;
+  --bg-subtle: #1e293b;
+  --bg-muted: #141e33;
+  --bg-elevated: #1e293b;
+
+  /* Border Tokens */
+  --border-color: #27354f;
+  --border-subtle: #1e293b;
+  --border-focus: #3b82f6;
+  --input-border: #334155;
+  --input-border-hover: #475569;
+
+  /* Typography Colors (High Contrast WCAG AA/AAA for Dark Background) */
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-light: #64748b;
+
+  /* Interactive & Accent Tokens */
+  --accent-blue: #3b82f6;
+  --accent-blue-hover: #60a5fa;
+  --accent-blue-active: #2563eb;
+  --accent-blue-subtle: rgba(59, 130, 246, 0.16);
+  --accent-blue-border: rgba(59, 130, 246, 0.35);
+
+  /* Semantic State Colors */
+  --color-success: #22c55e;
+  --color-success-bg: rgba(34, 197, 94, 0.12);
+  --color-success-border: rgba(34, 197, 94, 0.3);
+  --color-success-text: #4ade80;
+
+  --color-warning: #f59e0b;
+  --color-warning-bg: rgba(245, 158, 11, 0.12);
+  --color-warning-border: rgba(245, 158, 11, 0.3);
+  --color-warning-text: #fbbf24;
+
+  --color-danger: #ef4444;
+  --color-danger-bg: rgba(239, 68, 68, 0.12);
+  --color-danger-border: rgba(239, 68, 68, 0.3);
+  --color-danger-text: #f87171;
+
+  /* Shadows - Minimal and crisp for dark surfaces */
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.6), 0 2px 4px -2px rgba(0, 0, 0, 0.4);
+
+  color-scheme: dark;
+  color: var(--text-primary);
+  background-color: var(--bg-app);
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -70,6 +126,7 @@ body {
   color: var(--text-primary);
   line-height: 1.5;
   font-family: var(--font-sans);
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 #root {
